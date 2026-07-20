@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ברוכים הבאים | הבית בענבר 8, קצרין</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --stone: #EDE7DD;
+    --stone-dark: #DCD3C2;
+    --basalt: #2E2B27;
+    --olive: #6B7353;
+    --olive-dark: #4A5039;
+    --clay: #B4633C;
+    --lily: #C98A9E;
+    --lily-deep: #8C4A63;
+    --cream: #FBF8F2;
+    --ink: #2A2622;
+    --gold: #B08D57;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Assistant', sans-serif;
+    line-height: 1.7;
+    font-size: 17px;
+  }
+  h1,h2,h3{ font-family: 'Frank Ruhl Libre', serif; font-weight: 700; color: var(--basalt);}
+
+  ::selection{ background: var(--lily); color: white; }
+
+  /* NAV */
+  nav{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(251,248,242,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--stone-dark);
+    display:flex; justify-content:center;
+    padding: 14px 20px;
+  }
+  nav .wrap{ display:flex; gap: 28px; flex-wrap:wrap; justify-content:center; align-items:center; max-width: 960px;}
+  nav a{
+    color: var(--olive-dark); text-decoration:none; font-size: 15px; font-weight:600;
+    letter-spacing: .3px; position:relative; padding: 4px 2px;
+  }
+  nav a::after{
+    content:''; position:absolute; right:0; bottom:-3px; height:2px; width:0;
+    background: var(--clay); transition: width .25s ease;
+  }
+  nav a:hover::after{ width:100%; }
+
+  /* HERO */
+  header.hero{
+    position: relative;
+    min-height: 78vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(107,115,83,0.18), transparent 55%),
+      radial-gradient(ellipse at 75% 80%, rgba(201,138,158,0.16), transparent 50%),
+      linear-gradient(180deg, var(--stone) 0%, var(--cream) 100%);
+    padding: 40px 20px 80px;
+  }
+  .lotus-mark{
+    width: 64px; height:64px; margin: 0 auto 22px;
+    opacity: 0.85;
+  }
+  header.hero .eyebrow{
+    color: var(--clay); letter-spacing: 3px; font-size: 13px; font-weight:700;
+    text-transform: uppercase; margin-bottom: 18px; display:block;
+  }
+  header.hero h1{
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--basalt);
+  }
+  header.hero h1 span{ color: var(--clay); font-style: italic; }
+  header.hero p.sub{
+    max-width: 560px; margin: 0 auto; color: var(--olive-dark); font-size: 19px; font-weight: 400;
+  }
+  header.hero .addr{
+    margin-top: 34px; font-family:'Frank Ruhl Libre', serif; font-size: 17px;
+    color: var(--basalt); border-top: 1px solid var(--stone-dark); border-bottom: 1px solid var(--stone-dark);
+    padding: 14px 0; display:inline-block; letter-spacing: .5px;
+  }
+
+  section{ padding: 90px 20px; max-width: 880px; margin: 0 auto; }
+  section.alt{ background: var(--stone); border-radius: 28px; }
+
+  .eyebrow-label{
+    display:flex; align-items:center; gap: 10px; margin-bottom: 14px;
+    color: var(--olive); font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform:uppercase;
+  }
+  .eyebrow-label svg{ width:18px; height:18px; flex-shrink:0; }
+
+  section h2{ font-size: clamp(1.7rem, 4vw, 2.4rem); margin-bottom: 10px;}
+  section > p.lead{ color:#6b655c; font-size: 17px; margin-bottom: 40px; max-width: 620px;}
+
+  /* INFO GRID */
+  .grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px;
+  }
+  .card{
+    background: var(--cream); border: 1px solid var(--stone-dark); border-radius: 18px;
+    padding: 26px 24px; transition: transform .2s ease, box-shadow .2s ease;
+  }
+  section.alt .card{ background: var(--cream); }
+  .card:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(46,43,39,0.08); }
+  .card .icon{ font-size: 26px; margin-bottom: 12px; display:block; }
+  .card h3{ font-size: 18px; margin-bottom: 6px; }
+  .card p{ color:#5c564c; font-size: 15.5px; }
+
+  /* TIMELINE (check-in/out) */
+  .checktimes{ display:flex; gap: 20px; flex-wrap:wrap; }
+  .ctime{
+    flex:1; min-width: 200px; background: linear-gradient(135deg, var(--olive-dark), var(--olive));
+    color: var(--cream); border-radius: 18px; padding: 28px; text-align:center;
+  }
+  .ctime .label{ font-size:13px; letter-spacing:2px; text-transform:uppercase; opacity:.85; margin-bottom:8px;}
+  .ctime .time{ font-family:'Frank Ruhl Libre', serif; font-size: 2.2rem; }
+
+  /* MAP */
+  .map-frame{
+    border-radius: 20px; overflow:hidden; border: 1px solid var(--stone-dark);
+    aspect-ratio: 16/9; margin-top: 24px;
+  }
+  .map-frame iframe{ width:100%; height:100%; border:0; }
+
+  /* GUIDELINES */
+  .rules-list{ display:flex; flex-direction:column; gap: 0; }
+  .rule{
+    display:grid; grid-template-columns: 40px 1fr; gap: 18px;
+    padding: 22px 0; border-bottom: 1px solid var(--stone-dark);
+  }
+  .rule:last-child{ border-bottom:none; }
+  .rule .mark{ font-size: 22px; text-align:center; padding-top:2px; }
+  .rule h3{ font-size: 17px; margin-bottom: 4px; }
+  .rule p{ color:#5c564c; font-size: 15.5px; }
+
+  /* POOL - signature callout */
+  .pool-block{
+    margin-top: 10px;
+    background: linear-gradient(160deg, var(--lily-deep), var(--lily) 70%);
+    border-radius: 24px; padding: 36px 30px; color: #fff;
+    position: relative; overflow:hidden;
+  }
+  .pool-block::before{
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(circle at 85% 15%, rgba(255,255,255,0.18), transparent 45%);
+  }
+  .pool-block h3{ color:#fff; font-size: 1.5rem; display:flex; align-items:center; gap:10px; margin-bottom: 14px;}
+  .pool-block ul{ list-style:none; display:flex; flex-direction:column; gap:10px; position:relative; z-index:1; }
+  .pool-block li{ display:flex; gap:10px; align-items:flex-start; font-size: 15.5px; }
+  .pool-block li::before{ content:'◆'; font-size: 9px; margin-top: 7px; opacity:.85; }
+  .pool-block .strong{ font-weight:700; text-decoration: underline; text-underline-offset:3px; }
+
+  /* CONFIRMATION */
+  .confirm-box{
+    background: var(--basalt); color: var(--cream); border-radius: 26px; padding: 44px 32px;
+    margin-top: 20px;
+  }
+  .confirm-box h3{ color: var(--cream); font-size: 1.5rem; margin-bottom: 14px; }
+  .confirm-box p{ color: #d8d3c8; margin-bottom: 26px; font-size: 15.5px; }
+
+  .check-row{
+    display:flex; align-items:flex-start; gap: 12px; cursor:pointer;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px; padding: 18px; margin-bottom: 18px;
+  }
+  .check-row input[type=checkbox]{
+    width: 22px; height:22px; margin-top:2px; flex-shrink:0; accent-color: var(--clay); cursor:pointer;
+  }
+  .check-row span{ font-size: 15px; color: #f1eee6; }
+  .check-row .pool-note{ display:block; color: var(--lily); font-weight:700; margin-top:4px; }
+
+  .signature-row{
+    display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 22px;
+  }
+  .signature-row input[type=text]{
+    flex:1; min-width: 220px; background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.25);
+    border-radius: 12px; padding: 14px 16px; color: #fff; font-family:'Assistant'; font-size:15.5px;
+  }
+  .signature-row input::placeholder{ color: #b5b0a4; }
+  .signature-row label{ display:block; font-size: 13px; color:#b5b0a4; margin-bottom:6px; letter-spacing:.5px; }
+  .sig-col{ flex:1; min-width:220px; }
+
+  .confirm-btn{
+    width:100%; padding: 17px; border:none; border-radius: 14px;
+    background: var(--clay); color:#fff; font-family:'Assistant'; font-weight:700; font-size: 16.5px;
+    cursor:not-allowed; opacity:.5; transition: all .2s ease; letter-spacing:.3px;
+  }
+  .confirm-btn.active{ cursor:pointer; opacity:1; }
+  .confirm-btn.active:hover{ background: var(--lily-deep); }
+
+  .success-msg{
+    display:none; text-align:center; padding: 20px; margin-top:18px;
+    background: rgba(107,115,83,0.2); border:1px solid var(--olive); border-radius:14px;
+  }
+  .success-msg.show{ display:block; }
+  .success-msg .big{ font-size: 30px; margin-bottom: 8px; }
+  .success-msg h4{ color: #fff; font-family:'Frank Ruhl Libre'; font-size:1.2rem; margin-bottom:4px;}
+  .success-msg p{ color:#cfd0c5; font-size:14px; }
+
+  footer{
+    text-align:center; padding: 50px 20px 60px; color: #9b9587; font-size:14px;
+  }
+  footer .lotus-mark{ width:34px; height:34px; opacity:.6; margin-bottom:10px;}
+
+  @media (max-width: 640px){
+    section{ padding: 60px 16px; }
+    .rule{ grid-template-columns: 30px 1fr; gap:12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#home">הבית</a>
+    <a href="#house-info">מידע על הבית</a>
+    <a href="#area">הסביבה</a>
+    <a href="#location">הגעה</a>
+    <a href="#guidelines">הנחיות</a>
+    <a href="#shabbat">שבת</a>
+    <a href="#confirm">אישור</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div>
+    <svg class="lotus-mark" viewBox="0 0 64 64" fill="none">
+      <path d="M32 8C32 8 20 20 20 34C20 43 25 50 32 50C39 50 44 43 44 34C44 20 32 8 32 8Z" stroke="#B4633C" stroke-width="1.8"/>
+      <path d="M32 20C32 20 24 28 24 38C24 45 27 50 32 50C37 50 40 45 40 38C40 28 32 20 32 20Z" stroke="#C98A9E" stroke-width="1.8"/>
+      <path d="M10 40C10 40 20 36 32 40C44 36 54 40 54 40" stroke="#6B7353" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    <span class="eyebrow">בית ההארחה שלנו</span>
+    <h1>ברוכים הבאים<br><span>לבית המיוחד שלנו 🪷</span></h1>
+    <p class="sub">כל מה שצריך לדעת לפני ובמהלך השהות — מידע על הבית, הסביבה, ודברים חשובים שכדאי להכיר.</p>
+    <div class="addr">רחוב ענבר 8, קצרין</div>
+  </div>
+</header>
+
+<section id="house-info">
+  <div class="eyebrow-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7353" stroke-width="1.8"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+    מידע על הבית
+  </div>
+  <h2>שיהיה לכם נעים ונוח</h2>
+  <p class="lead">כמה דברים שכדאי להכיר כדי שהשהות תהיה קלה ונעימה.</p>
+
+  <div class="checktimes">
+    <div class="ctime">
+      <div class="label">כניסה</div>
+      <div class="time">16:00</div>
+    </div>
+    <div class="ctime">
+      <div class="label">יציאה</div>
+      <div class="time">10:00</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:22px;">
+    <div class="card">
+      <span class="icon">💦</span>
+      <h3>שמירה על הבית</h3>
+      <p>אנא שמרו על הבית, ובייחוד הימנעו מרטיבות על הפרקט.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🧴</span>
+      <h3>מטבח כשר</h3>
+      <p>סימון ברור בבית: צד ימין בשרי (כולל כיור נפרד), צד שמאל חלבי (כולל כיור נפרד). כל מה שחסר במטבח — שמנים, תבלינים וכו' — אתם מוזמנים להשתמש בשמחה.</p>
+    </div>
+    <div class="card">
+      <span class="icon">👟</span>
+      <h3>נעליים</h3>
+      <p>ממליצים להוריד נעליים בבית — שומר על הפרקטים ומונע רעש מיותר. חוויה נעימה ומיוחדת.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🍢</span>
+      <h3>מנגל</h3>
+      <p>מנגל גז בחוץ — לשימושכם החופשי. מנגל גחלים עדיף להימנע בבית; מי שרוצה, ניתן להשתמש בשביל הכניסה לבית.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🎲</span>
+      <h3>חדרים, ספרים ומשחקים</h3>
+      <p>סידרנו את הבית כדי שתיהנו מהחדרים, הספרים והמשחקים. נשמח אם תשאירו הכול מסודר בשבילכם ובשביל האורחים הבאים.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🚗</span>
+      <h3>חניה</h3>
+      <p>ליד הבית יש 3 מקומות חניה קרובים. חניה נוספת אפשרית בכביש הראשי, כדקת הליכה מהבית. אנא הימנעו מחסימת הכביש — זו שכונת מגורים ויש להתחשב בשכנים.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🚽</span>
+      <h3>שירותים</h3>
+      <p>הכפתורים במכסי ההדחה מעט ישנים ולעיתים נתקעים. לאחר השימוש, אנא ודאו שהמים נעצרו ולא ממשיכים לזרום — ואם כן, נסו ללחוץ שוב על הכפתור.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🔧</span>
+      <h3>תקלות ונזק</h3>
+      <p>קרה נזק או תקלה? אנא דווחו בהקדם כדי שנוכל לטפל מיד.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🪟</span>
+      <h3>גלאי עשן ותריסים</h3>
+      <p>סרטוני הסבר יועלו כאן בקרוב:</p>
+      <p>🎥 סרטון הסבר על גלאי העשן — בקרוב</p>
+      <p>🎥 סרטון הסבר על הוילונות — בקרוב</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="area">
+  <div class="eyebrow-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7353" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3a15 15 0 010 18M3 12h18"/></svg>
+    הסביבה
+  </div>
+  <h2>קצת על האזור</h2>
+  <p class="lead">קצרין והגולן מציעים נופים, טיולים ומקומות שווים לבלות בהם. נשמח לשתף המלצות אישיות אם תרצו — פשוט שאלו אותנו.</p>
+  <div class="grid">
+    <div class="card">
+      <span class="icon">🥾</span>
+      <h3>מצפה שמיר</h3>
+      <p>נקודת תצפית מומלצת באזור.</p>
+      <p><a href="https://maps.app.goo.gl/t3VoHZ85znYQV8xy6" target="_blank" rel="noopener">פתיחה במפות גוגל ↗</a></p>
+    </div>
+    <div class="card">
+      <span class="icon">💧</span>
+      <h3>מעיין פחורה</h3>
+      <p>מסלול מעולה לכל המשפחה, כ-20 דקות הליכה מהבית.</p>
+      <p><a href="https://maps.app.goo.gl/RkhGK73ayVFFb9aM9" target="_blank" rel="noopener">פתיחה במפות גוגל ↗</a></p>
+    </div>
+    <div class="card">
+      <span class="icon">🏔️</span>
+      <h3>מצפה עמיחי</h3>
+      <p>נוף פתוח ויפה, מומלץ לביקור.</p>
+      <p><a href="https://maps.app.goo.gl/3zi15iQkh9HaCXfP9" target="_blank" rel="noopener">פתיחה במפות גוגל ↗</a></p>
+    </div>
+    <div class="card">
+      <span class="icon">🕍</span>
+      <h3>בתי כנסת</h3>
+      <p>רשימת בתי הכנסת באזור.</p>
+      <p><a href="https://tr.ee/vVuj1j8Oko" target="_blank" rel="noopener">לרשימה המלאה ↗</a></p>
+    </div>
+    <div class="card">
+      <span class="icon">🛁</span>
+      <h3>מקווה</h3>
+      <p>פרטים ושעות פעילות המקווה בקצרין.</p>
+      <p><a href="https://katzrin.md.gov.il/home/mikve/" target="_blank" rel="noopener">לאתר המקווה ↗</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="location">
+  <div class="eyebrow-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7353" stroke-width="1.8"><path d="M12 21s-7-6.5-7-11a7 7 0 0114 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    מיקום והגעה
+  </div>
+  <h2>איך מגיעים</h2>
+  <p class="lead">רחוב ענבר 8, קצרין. הבית נמצא בשכונת מגורים שקטה.</p>
+  <div class="map-frame">
+    <iframe src="https://www.google.com/maps?q=%D7%A2%D7%A0%D7%91%D7%A8%208%2C%20%D7%A7%D7%A6%D7%A8%D7%99%D7%9F&output=embed" loading="lazy" allowfullscreen></iframe>
+  </div>
+
+  <div class="grid" style="margin-top:22px;">
+    <div class="card">
+      <span class="icon">📶</span>
+      <h3>וויפיי</h3>
+      <p>רשת: <strong>HOTWIFI-GUEST</strong><br>סיסמה: <strong>1234567890</strong></p>
+    </div>
+    <div class="card">
+      <span class="icon">📞</span>
+      <h3>יצירת קשר</h3>
+      <p>אהרן: <a href="tel:0533033336">053-303-3336</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="guidelines">
+  <div class="eyebrow-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7353" stroke-width="1.8"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    הנחיות הבית
+  </div>
+  <h2>כמה דברים לקראת האירוח</h2>
+  <p class="lead">אנא קראו את ההנחיות הבאות לפני האירוח — ובייחוד את הסעיף על הבריכה.</p>
+
+  <div class="rules-list">
+    <div class="rule">
+      <div class="mark">💦</div>
+      <div><h3>שמירה על הבית</h3><p>אנא שמרו על הבית, ובייחוד הימנעו מרטיבות על הפרקט.</p></div>
+    </div>
+    <div class="rule">
+      <div class="mark">🌙</div>
+      <div><h3>שקט בשכונה</h3><p>הבית בשכונת מגורים שקטה — אנא כבדו את השכנים. אין להפעיל בוקסות, ומהשעה 22:00 אנא שמרו על שקט והימנעו משחייה רועשת בבריכה.</p></div>
+    </div>
+    <div class="rule">
+      <div class="mark">🕓</div>
+      <div><h3>שעות כניסה ויציאה</h3><p>כניסה 16:00, יציאה 10:00. נא לדייק בזמנים כדי לא לעכב את צוות הניקיון.</p></div>
+    </div>
+  </div>
+
+  <div class="pool-block">
+    <h3>🏊 הבריכה — לתשומת לבכם המיוחדת</h3>
+    <ul>
+      <li>קיים גידור ושער לבריכה, וסולם מתקפל לבטיחות כפולה.</li>
+      <li><span class="strong">חובה להעלות את הסולם המתקפל אחרי כל יציאה מהבריכה, ולסגור את השער.</span></li>
+      <li><span class="strong">האחריות המלאה על השימוש בבריכה היא שלכם.</span></li>
+      <li>אנא שמרו על הילדים — <span class="strong">השגחת מבוגר חובה בכל עת</span>.</li>
+      <li>אין ביטוח על הבריכה.</li>
+      <li>מהשעה 22:00 — אנא הימנעו משחייה רועשת, מתוך כבוד לשכנים.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt" id="shabbat">
+  <div class="eyebrow-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7353" stroke-width="1.8"><path d="M12 3v9l6 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    שבת
+  </div>
+  <h2>מידע לשבת</h2>
+  <p class="lead">כמה דברים חשובים לדעת לגבי שבת בבית.</p>
+
+  <div class="rules-list">
+    <div class="rule">
+      <div class="mark">🔥</div>
+      <div><h3>מים חמים</h3><p>המים החמים בבית פועלים על גז, ולכן אסור להשתמש בהם בשבת. מותקן שעון שבת אוטומטי שמכבה את המים החמים לשבת מהשעה 19:30 ביום שישי ועד השעה 20:15 במוצאי שבת.</p></div>
+    </div>
+    <div class="rule">
+      <div class="mark">⏱️</div>
+      <div><h3>מיקום שעון השבת</h3><p>שעון השבת נמצא בכניסה לבית, ליד מערכת גלאי האש. סרטון הסבר יישלח בקרוב.</p></div>
+    </div>
+    <div class="rule">
+      <div class="mark">❄️</div>
+      <div><h3>מקרר</h3><p>לכיבוי האור במקרר: ללחוץ 10 שניות על כפתור ה-FREEZER. להחזרה במוצאי שבת: ללחוץ 3 שניות על אותו כפתור.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="confirm">
+  <div class="eyebrow-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#6B7353" stroke-width="1.8"><path d="M4 12l6 6L20 6"/></svg>
+    אישור קריאה
+  </div>
+  <h2>נא לאשר לפני האירוח</h2>
+  <p class="lead">כדי שנדע שקראתם, אנא סמנו ואשרו את ההודעה למטה.</p>
+
+  <div class="confirm-box">
+    <h3>אישור ההנחיות</h3>
+    <p>אורחים יקרים, לפני שמגיעים — נשמח שתאשרו שקראתם את ההנחיות, ובפרט את הסעיף בנוגע לבריכה.</p>
+
+    <label class="check-row">
+      <input type="checkbox" id="agreeCheck">
+      <span>
+        קראתי ואני מאשר/ת את הנחיות הבית.
+        <span class="pool-note">בפרט — קראתי את סעיף הבטיחות בבריכה, ואני מבין/ה שהאחריות המלאה על השימוש בבריכה ועל השגחה על ילדים היא עליי.</span>
+      </span>
+    </label>
+
+    <div class="signature-row">
+      <div class="sig-col">
+        <label for="fullName">שם מלא (כחתימה דיגיטלית)</label>
+        <input type="text" id="fullName" placeholder="הקלידו שם מלא...">
+      </div>
+    </div>
+
+    <button class="confirm-btn" id="confirmBtn" disabled>אשר/י את ההודעה</button>
+
+    <div class="success-msg" id="successMsg">
+      <div class="big">🪷</div>
+      <h4>תודה, <span id="successName"></span>!</h4>
+      <p id="successDate"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <svg class="lotus-mark" viewBox="0 0 64 64" fill="none">
+    <path d="M32 8C32 8 20 20 20 34C20 43 25 50 32 50C39 50 44 43 44 34C44 20 32 8 32 8Z" stroke="#9b9587" stroke-width="1.8"/>
+  </svg>
+  <p>נשמח לארח אתכם. תהנו 🙏💐</p>
+</footer>
+
+<script>
+  const checkbox = document.getElementById('agreeCheck');
+  const nameInput = document.getElementById('fullName');
+  const btn = document.getElementById('confirmBtn');
+  const successMsg = document.getElementById('successMsg');
+  const successName = document.getElementById('successName');
+  const successDate = document.getElementById('successDate');
+
+  function updateBtnState(){
+    const ready = checkbox.checked && nameInput.value.trim().length > 1;
+    btn.disabled = !ready;
+    btn.classList.toggle('active', ready);
+  }
+
+  checkbox.addEventListener('change', updateBtnState);
+  nameInput.addEventListener('input', updateBtnState);
+
+  btn.addEventListener('click', () => {
+    if (btn.disabled) return;
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('he-IL') + ' ' + now.toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+    successName.textContent = nameInput.value.trim();
+    successDate.textContent = 'אושר בתאריך ' + dateStr;
+    successMsg.classList.add('show');
+    btn.textContent = 'אושר ✓';
+    btn.disabled = true;
+    btn.classList.remove('active');
+    checkbox.disabled = true;
+    nameInput.disabled = true;
+  });
+</script>
+
+</body>
+</html>
